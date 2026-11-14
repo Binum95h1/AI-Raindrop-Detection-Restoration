@@ -10,6 +10,26 @@ Repository nghiên cứu ảnh bị giọt mưa che phủ, gồm nhận diện b
 | Phân đoạn semantic | Mã huấn luyện YOLO26n, ảnh grayscale 1 kênh, mask background/raindrop | [training](nhan-dien/training/README.md) |
 | Phục hồi | Hybrid gốc, mã suy luận và báo cáo nghiên cứu | [ket-qua-hoi-phuc](ket-qua-hoi-phuc) |
 
+## Sơ đồ kiến trúc trong báo cáo
+
+Hai hình dưới được trích nguyên từ **trang 3 của báo cáo nghiên cứu** (`23119009_BuiNguyenHung_Report.pdf`), mô tả thiết kế trong báo cáo. Đây là phần minh họa kiến trúc; không đồng nghĩa toàn bộ chuỗi mô hình đã được tích hợp và kiểm chứng trong mã hiện có.
+
+### Phân đoạn giọt mưa bằng YOLO26n
+
+Ảnh grayscale một kênh đi qua backbone và đầu phân đoạn để tạo mặt nạ giọt nước ở mức pixel. Hình này minh họa hướng phân đoạn trong [mã huấn luyện semantic](nhan-dien/training/README.md), khác với checkpoint YOLOv8n-OBB đang được kèm để chạy nhận diện bằng khung xoay.
+
+![Kiến trúc YOLO26n semantic segmentation với đầu vào grayscale một kênh](docs/images/yolo26n-semantic-architecture.jpg)
+
+*Hình 1 trong báo cáo: sơ đồ tổng thể kiến trúc YOLO26n Seg.*
+
+### Kiến trúc phục hồi TURR-Net trong báo cáo
+
+Sơ đồ trình bày các khối Transformer encoder–decoder, semantic guidance và hiệu chỉnh/phục hồi chi tiết. Chi tiết triển khai Hybrid đang được giữ trong repo nằm ở [mã phục hồi](ket-qua-hoi-phuc/models.py); sơ đồ trong báo cáo cần được đọc cùng mã nguồn khi đối chiếu từng khối. Hiện repo chưa tự động nối đầu ra nhận diện vào mô hình phục hồi.
+
+![Kiến trúc lai TURR-Net trình bày trong báo cáo nghiên cứu](docs/images/turr-net-restoration-architecture.png)
+
+*Hình 2 trong báo cáo: kiến trúc lai TURR-Net với Restormer và khối hiệu chỉnh Refiner.*
+
 ## Bắt đầu với phần nhận diện
 
 Trên Windows, mở thư mục `nhan-dien`, chạy `01_SETUP_CPU.cmd`, đặt ảnh vào `input` rồi chạy `02_TEST_FULL.cmd`. Checkpoint `nhan-dien/model/best.pt` đã được kèm trong repo; kết quả gồm ảnh có khung xoay, JSON và CSV.
