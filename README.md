@@ -1,4 +1,6 @@
-# Muaxla — Nhận diện giọt mưa và phục hồi ảnh
+# AI Raindrop Detection Restoration
+
+Nhận diện giọt mưa và phục hồi ảnh trên bộ dữ liệu Muaxla.
 
 Repository nghiên cứu ảnh bị giọt mưa che phủ, gồm nhận diện bằng YOLO và phục hồi ảnh bằng Hybrid. Bộ mã được tổ chức thành các phần độc lập:
 
@@ -31,9 +33,9 @@ Bộ kết quả và công cụ chạy **Hybrid gốc** được giữ lại t�
 
 ## Tải gói phục hồi ảnh
 
-➡️ [Ket_qua_hoi_phuc_v1.zip — model + mã + báo cáo + ảnh](https://github.com/Binum95h1/muaxla-raindrop-detection-restoration/releases/download/v1.0.0/Ket_qua_hoi_phuc_v1.zip)
+➡️ [Ket_qua_hoi_phuc_v1.zip — model + mã + báo cáo + ảnh](https://github.com/Binum95h1/AI-Raindrop-Detection-Restoration/releases/download/v1.0.0/Ket_qua_hoi_phuc_v1.zip)
 
-Hoặc mở [trang Release v1.0.0](https://github.com/Binum95h1/muaxla-raindrop-detection-restoration/releases/tag/v1.0.0). ZIP có đầy đủ model57MB, mã chạy,13báo cáo,18ảnh so sánh và bảngSHA256. Trọng số nằm trong ZIP để repo mã nguồn gọn.
+Hoặc mở [trang Release v1.0.0](https://github.com/Binum95h1/AI-Raindrop-Detection-Restoration/releases/tag/v1.0.0). ZIP có đầy đủ model57MB, mã chạy,13báo cáo,18ảnh so sánh và bảngSHA256. Trọng số nằm trong ZIP để repo mã nguồn gọn.
 
 ## Cách chạy
 
