@@ -1,0 +1,11 @@
+{
+  "task": "obb",
+  "architecture_reported_by_local_readme": "YOLOv8n-OBB",
+  "class_names": {
+    "0": "raindrop"
+  },
+  "ultralytics": "8.4.175",
+  "bytes": 25055961,
+  "sha256": "f406e9b69a66f4e4630816fb9605780a1ef1c9830aa2dabf407858d36d9c8659",
+  "source": "Existing local RainDrop_Test_Local/model/best.pt; not the YOLO26n semantic training output."
+}

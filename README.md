@@ -1,14 +1,39 @@
-# Muaxla — Kết quả phục hồi ảnh mưa
+# Muaxla — Nhận diện giọt mưa và phục hồi ảnh
+
+Repository nghiên cứu ảnh bị giọt mưa che phủ, gồm nhận diện bằng YOLO và phục hồi ảnh bằng Hybrid. Bộ mã được tổ chức thành các phần độc lập:
+
+| Phần | Nội dung | Hướng dẫn |
+| --- | --- | --- |
+| Nhận diện OBB | YOLOv8n-OBB, checkpoint đã có, chạy FULL hoặc GRID16X3 trên ảnh | [nhan-dien](nhan-dien/README.md) |
+| Phân đoạn semantic | Mã huấn luyện YOLO26n, ảnh grayscale 1 kênh, mask background/raindrop | [training](nhan-dien/training/README.md) |
+| Phục hồi | Hybrid gốc, mã suy luận và báo cáo nghiên cứu | [ket-qua-hoi-phuc](ket-qua-hoi-phuc) |
+
+## Bắt đầu với phần nhận diện
+
+Trên Windows, mở thư mục `nhan-dien`, chạy `01_SETUP_CPU.cmd`, đặt ảnh vào `input` rồi chạy `02_TEST_FULL.cmd`. Checkpoint `nhan-dien/model/best.pt` đã được kèm trong repo; kết quả gồm ảnh có khung xoay, JSON và CSV.
+
+Để dùng dữ liệu ở nơi khác:
+
+```powershell
+cd nhan-dien
+.venv\Scripts\python.exe test_raindrop.py --input "D:\Anh_mua" --mode full --device cpu
+```
+
+Phần semantic là mã huấn luyện riêng trên Kaggle, chưa kèm model đã train. Checkpoint OBB hiện có không phải model phân đoạn. Hai phần nhận diện và phục hồi chưa được tự động nối thành một pipeline chung. Chi tiết cấu hình, đầu ra và giới hạn nằm trong README của từng phần.
+
+Mã nguồn, checkpoint nhận diện đã chọn và hướng dẫn được đưa lên GitHub; dataset, môi trường Python, cache và output hàng loạt được giữ ngoài repo.
+
+## Nghiên cứu phục hồi ảnh
 
 Bộ kết quả và công cụ chạy **Hybrid gốc** được giữ lại từ nghiên cứu phục hồi ảnh mưa Muaxla.
 
 **Trạng thái:** các nhánh thử bổ sung chưa đạt mục tiêu cải thiện thêm5%; chưa tuyên bố phục hồi hoàn toàn hoặc có đánh giá test cuối mới. Chi tiết và số liệu nằm trong [báo cáo](ket-qua-hoi-phuc/Bao_cao_ket_qua.md).
 
-## Tải toàn bộ trong một file
+## Tải gói phục hồi ảnh
 
-➡️ [Ket_qua_hoi_phuc_v1.zip — model + mã + báo cáo + ảnh](https://github.com/Binum95h1/muaxla-raindrop-restoration/releases/download/v1.0.0/Ket_qua_hoi_phuc_v1.zip)
+➡️ [Ket_qua_hoi_phuc_v1.zip — model + mã + báo cáo + ảnh](https://github.com/Binum95h1/muaxla-raindrop-detection-restoration/releases/download/v1.0.0/Ket_qua_hoi_phuc_v1.zip)
 
-Hoặc mở [trang Release v1.0.0](https://github.com/Binum95h1/muaxla-raindrop-restoration/releases/tag/v1.0.0). ZIP có đầy đủ model57MB, mã chạy,13báo cáo,18ảnh so sánh và bảngSHA256. Trọng số nằm trong ZIP để repo mã nguồn gọn.
+Hoặc mở [trang Release v1.0.0](https://github.com/Binum95h1/muaxla-raindrop-detection-restoration/releases/tag/v1.0.0). ZIP có đầy đủ model57MB, mã chạy,13báo cáo,18ảnh so sánh và bảngSHA256. Trọng số nằm trong ZIP để repo mã nguồn gọn.
 
 ## Cách chạy
 
